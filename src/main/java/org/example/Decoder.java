@@ -1,0 +1,32 @@
+package org.example;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
+public class Decoder {
+    public static String vowelReplacement(String message){
+        return message.replaceAll("1", "a")
+                .replaceAll("2", "e")
+                .replaceAll("3", "i")
+                .replaceAll("4", "o")
+                .replaceAll("5", "u");
+    }
+    public static String consonantReplacement(String message){
+        StringBuilder decoded = new StringBuilder();
+        for(int i = 0; i < message.length(); i++){
+           char currentSymb = message.charAt(i);
+           char decodedSymb = currentSymb;
+           if(currentSymb == 'a' || currentSymb == 'A'){
+               decodedSymb += 25;
+           } else {
+               decodedSymb = (char) (currentSymb - 1);
+           }
+           decoded.append(decodedSymb);
+        }
+        return decoded.toString();
+    }
+    public static boolean isVowelReplacement(String message){
+        Pattern pattern = Pattern.compile("[1-5]+");
+        Matcher matcher = pattern.matcher(message);
+        return matcher.matches();
+    }
+}
