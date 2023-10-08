@@ -41,6 +41,6 @@ public class Decoder {
             }
             decodedMessage.append(" ");
         }
-        return decodedMessage.toString();
+        return decodedMessage.toString().trim();
     }
 }
