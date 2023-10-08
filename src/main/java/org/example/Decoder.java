@@ -15,7 +15,7 @@ public class Decoder {
         for(int i = 0; i < message.length(); i++){
            char currentSymb = message.charAt(i);
            char decodedSymb = currentSymb;
-           if(Character.isLowerCase(currentSymb) || Character.isUpperCase(currentSymb)){
+           if(Character.isLetter(currentSymb)){
                if(currentSymb == 'a' || currentSymb == 'A'){
                    decodedSymb = (char) (decodedSymb + 25);
                } else {
