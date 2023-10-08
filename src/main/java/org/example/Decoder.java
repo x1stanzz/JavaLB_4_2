@@ -16,7 +16,7 @@ public class Decoder {
            char currentSymb = message.charAt(i);
            char decodedSymb = currentSymb;
            if(currentSymb == 'a' || currentSymb == 'A'){
-               decodedSymb += 25;
+               decodedSymb = (char) (decodedSymb + 25);
            } else {
                decodedSymb = (char) (currentSymb - 1);
            }
@@ -28,5 +28,19 @@ public class Decoder {
         Pattern pattern = Pattern.compile("[1-5]+");
         Matcher matcher = pattern.matcher(message);
         return matcher.matches();
+    }
+
+    public static String decodeMessage(String message){
+        String[] words = message.split("\\s+");
+        StringBuilder decodedMessage = new StringBuilder();
+        for(String word : words){
+            if(isVowelReplacement(word)){
+                decodedMessage.append(vowelReplacement(word));
+            } else {
+                decodedMessage.append(consonantReplacement(word));
+            }
+            decodedMessage.append(" ");
+        }
+        return decodedMessage.toString();
     }
 }
