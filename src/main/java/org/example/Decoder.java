@@ -30,14 +30,21 @@ public class Decoder {
         return matcher.find();
     }
 
+    public static boolean isConsonantReplacement(String message){
+        Pattern pattern = Pattern.compile("[bcdfghjklmnpqrstvwxyz]+");
+        Matcher matcher = pattern.matcher(message);
+        return matcher.find();
+    }
     public static String decodeMessage(String message){
         String[] words = message.split("\\s+");
         StringBuilder decodedMessage = new StringBuilder();
         for(String word : words){
             if(isVowelReplacement(word)){
                 decodedMessage.append(vowelReplacement(word));
-            } else {
+            } else if(isConsonantReplacement(word)){
                 decodedMessage.append(consonantReplacement(word));
+            } else{
+                decodedMessage.append(word);
             }
             decodedMessage.append(" ");
         }
