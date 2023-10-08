@@ -27,7 +27,7 @@ public class Decoder {
     public static boolean isVowelReplacement(String message){
         Pattern pattern = Pattern.compile("[1-5]+");
         Matcher matcher = pattern.matcher(message);
-        return matcher.matches();
+        return matcher.find();
     }
 
     public static String decodeMessage(String message){
